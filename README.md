@@ -1,6 +1,6 @@
 # my_meals
 
-A new Flutter project.
+A reedit of old meal app
 
 ## Getting Started
 
