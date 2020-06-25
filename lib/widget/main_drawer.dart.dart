@@ -4,7 +4,7 @@ class MainDrawer extends StatelessWidget{
  Widget buildListTile(String title, IconData icon, Function tapAction){
    return ListTile(leading: Icon(icon, size: 26,),
       title: Text(title, style: TextStyle(fontFamily: 'RobotoCondensed', fontSize: 24, fontWeight: FontWeight.bold)),
-      onTap: null,
+      onTap: tapAction,
       );
  }
   @override
@@ -20,10 +20,10 @@ class MainDrawer extends StatelessWidget{
       ),
       SizedBox(height: 20,),
       buildListTile('Meals', Icons.restaurant, (){
-        Navigator.of(context).pushNamed('/');
+        Navigator.of(context).pushReplacementNamed('/');
       }),
       buildListTile('Settings', Icons.settings, (){
-        Navigator.of(context).pushNamed('/filter-screen');
+        Navigator.of(context).pushReplacementNamed('/filter-screen');
       })
       
   ],));
