@@ -7,7 +7,7 @@ class FilterScreen extends StatelessWidget{
     return Scaffold(
       drawer: MainDrawer(),
       appBar: AppBar(title: Text('Filters'),),
-      body: Center(child: Text('Some Filters!!'),)
+      body: Center(child: Text('Some Filters!!'),),
       );
   }
 }

@@ -8,6 +8,7 @@ class MealItem extends StatelessWidget{
   final int duration;
   final Complexity complexity;
   final Affordability affordability;
+  final Function removeItem;
 
   MealItem({
     @required this.id,
@@ -15,8 +16,10 @@ class MealItem extends StatelessWidget{
     @required this.imageUrl,
     @required this.duration,
     @required this.complexity,
-    @required this.affordability
+    @required this.affordability,
+    @required this.removeItem,
   });
+ 
   String get complexityText{
     switch(complexity){
       case Complexity.Simple : 
@@ -31,6 +34,7 @@ class MealItem extends StatelessWidget{
       default : return 'Unknown';
     }
   }
+
   String get affordabilityText{
     switch(affordability){
       case Affordability.Affordable : 
@@ -47,7 +51,11 @@ class MealItem extends StatelessWidget{
   }
 
   void selectMeal(BuildContext ctx){
-    Navigator.of(ctx).pushNamed('/category-meals-detail', arguments: id);
+    Navigator.of(ctx).pushNamed('/category-meals-detail', arguments: id).then((result){
+      if (result != null){
+        removeItem(result);
+      }
+    });
   }
 
   @override
@@ -97,7 +105,7 @@ class MealItem extends StatelessWidget{
                 Row(children: <Widget>[
                   Icon(Icons.schedule),
                   SizedBox(width: 6),
-                  Text('$duration min'),
+                  Text('${duration} min'),
                 ],),
                 Row(children: <Widget>[
                   Icon(Icons.work),
